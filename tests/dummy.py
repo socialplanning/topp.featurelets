@@ -10,3 +10,12 @@ class ObjectsFeaturelet(BaseFeaturelet):
                          {'id': 'bar', 'class': DTMLMethod},
                          ),
              }
+
+class ContentFeaturelet(BaseFeaturelet):
+    id = 'objects_featurelet'
+    _info = {'content': ({'id': 'foo', 'title': 'Foo',
+                          'portal_type': 'Document'},
+                         {'id': 'bar', 'title': 'Bar',
+                          'portal_type': 'Document'},
+                         ),
+             }
