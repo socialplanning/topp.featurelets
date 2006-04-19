@@ -9,10 +9,19 @@ from interfaces import IMenuSupporter
 
 class BaseFeaturelet(object):
     """
-    Abstract base class for featurelet objects.
+    Abstract base class for featurelet objects.  At a minimum,
+    subclasses must provide an 'id' attribute (to complete the
+    IFeaturelet implementation) and an '_info' attribute which
+    actually describes the featurelet's contents.
     """
     _required_interfaces = (IObjectManager, IMenuSupporter)
     _menu_id = 'featurelets'
+
+    def getConfigView(self):
+        """
+        See IFeaturelet.
+        """
+        return None
 
     def _checkForRequiredInterfaces(self, obj):
         """
