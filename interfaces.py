@@ -6,6 +6,7 @@ class IFeaturelet(Interface):
     """
 
     id = Attribute("id")
+    title = Attribute("title")
     
     def getConfigView():
         """
@@ -108,4 +109,37 @@ class IMenuSupporter(Interface):
         """
         Returns a mapping of menu items for the specified menu id.
         Keys are the titles, values are BrowserMenuItem objects.
+        """
+
+class IFeatureletRegistry(Interface):
+    """
+    Defines a featurelet registration utility that featurelet
+    supporters can use to discover which featurelets are available.
+    """
+    
+    def registerFeaturelet(featurelet):
+        """
+        Registers a featurelet with the registry.  Raises an exception
+        if a featurelet with the same id already exists.
+        """
+
+    def unregisterFeaturelet(featurelet_id):
+        """
+        Removes a featurelet with the specified id from the registry.
+        Does nothing if no matching featurelet is registered.
+        """
+
+    def getFeaturelet(featurelet_id):
+        """
+        Retrieves the featurelet w/ the specified id.  Returns None if
+        no matching featurelet is registered.
+        """
+
+    def getFeaturelets(supporter=None):
+        """
+        Returns all registered featurelets.  If 'supporter' is
+        provided, then supporter is checked for adaptation to each of
+        the featurelets' required interfaces, and only the featurelets
+        which can actually be installed into the supporter are
+        returned.
         """

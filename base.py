@@ -14,8 +14,8 @@ from interfaces import IMenuSupporter
 class BaseFeaturelet(object):
     """
     Abstract base class for featurelet objects.  At a minimum,
-    subclasses must provide an 'id' attribute (to complete the
-    IFeaturelet implementation) and an '_info' attribute which
+    subclasses must provide 'id' and 'title' attributes (to complete
+    the IFeaturelet implementation) and an '_info' attribute which
     actually describes the featurelet's contents.
     """
     _required_interfaces = (IObjectManager, IMenuSupporter)

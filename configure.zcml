@@ -15,4 +15,8 @@
            factory=".menusupporter.MenuSupporter"
            />
 
+  <utility provides=".interfaces.IFeatureletRegistry"
+           factory=".registry.FeatureletRegistry"
+           />
+
 </configure>

@@ -43,7 +43,9 @@ class MenuSupporter(object):
         title = menu_item.title
         if menu_info.has_key(title):
             return
-        menu_info[title] = menu_item
+        # XXX can't store the actual menu instance, need to store the
+        # full menu information
+        menu_info[title] = menu_item.title
 
     def removeMenuItem(self, menu_id, menu_item_title):
         """
