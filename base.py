@@ -111,10 +111,7 @@ class BaseFeaturelet(object):
         supporter = IMenuSupporter(obj)
         menu_items = info.get('menu_items', tuple())
         for item_info in menu_items:
-            item = BrowserMenuItem(obj, obj.REQUEST)
-            for key, value in item_info.items():
-                setattr(item, key, value)
-            supporter.addMenuItem(menu_id, item)
+            supporter.addMenuItem(menu_id, item_info)
 
     def deliverPackage(self, obj):
         """
