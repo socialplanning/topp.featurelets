@@ -11,6 +11,8 @@ except ImportError:
 from interfaces import IFeatureletSupporter
 from interfaces import IMenuSupporter
 
+from config import MENU_ID
+
 class BaseFeaturelet(object):
     """
     Abstract base class for featurelet objects.  At a minimum,
@@ -19,7 +21,7 @@ class BaseFeaturelet(object):
     actually describes the featurelet's contents.
     """
     _required_interfaces = (IObjectManager, IMenuSupporter)
-    _menu_id = 'featurelets'
+    _menu_id = MENU_ID
 
     def getConfigView(self):
         """
