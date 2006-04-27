@@ -1,4 +1,5 @@
 from persistent.mapping import PersistentMapping
+from topp.utils.orderedpersistentmapping import OrderedPersistentMapping
 
 from zope.interface import implements
 from zope.app.annotation.interfaces import IAnnotations
@@ -30,7 +31,7 @@ class MenuSupporter(object):
         menu_info = self.storage.get(menu_id, None)
         if menu_info is None:
             if create:
-                menu_info = self.storage[menu_id] = PersistentMapping()
+                menu_info = self.storage[menu_id] = OrderedPersistentMapping()
             else:
                 menu_info = {}
         return menu_info
