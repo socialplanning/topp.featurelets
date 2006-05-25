@@ -40,4 +40,3 @@ class FeatureletsPortalTestCase(CMFTestCase):
         register_zcml(with_setup=True)
         directlyProvides(self.folder, IAttributeAnnotatable)
         self.supporter = IFeatureletSupporter(self.folder)
-
