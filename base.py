@@ -1,7 +1,6 @@
 from OFS.interfaces import IObjectManager
 import zExceptions
 
-from zope.app.publisher.browser.menu import BrowserMenuItem
 from zope.interface import directlyProvides
 from zope.interface import directlyProvidedBy
 

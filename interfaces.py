@@ -82,8 +82,8 @@ class IFeatureletSupporter(Interface):
 
 class IMenuSupporter(Interface):
     """
-    Marks an object as being able to receive BrowserMenuItem objects
-    as provided by a featurelet.
+    Marks an object as being able to receive menu item mappings as
+    provided by a featurelet.
     """
 
     def addMenuItem(menu_id, menu_item):
@@ -94,7 +94,7 @@ class IMenuSupporter(Interface):
         o menu_id - A string representing the id of the menu w/ which
         the item should be registered.
 
-        o menu_item - A BrowserMenuItem object.
+        o menu_item - A mapping containing the menu item info.
         """
 
     def removeMenuItem(menu_id, menu_item_title):
@@ -113,7 +113,7 @@ class IMenuSupporter(Interface):
     def getMenuItems(menu_id):
         """
         Returns a mapping of menu items for the specified menu id.
-        Keys are the titles, values are BrowserMenuItem objects.
+        Keys are the titles, values are menu item info mappings.
         """
 
 class IFeatureletRegistry(Interface):
