@@ -5,16 +5,21 @@ class IFeaturelet(Interface):
     Marks a featurelet that can be plugged in to any IFeatureletSupporter.
     """
 
-    id = Attribute("id")
-    title = Attribute("title")
+    id = Attribute("id", "Featurelet id.")
     
-    def getConfigView():
-        """
-        Returns a view object responsible for exposing the
-        configuration options for the featurelet.  This configures the
-        'package' that the featurelet provides to the featurelet
-        supporter when deliverPackage is called.
-        """
+    title = Attribute("title", "Featurelet title.")
+    
+    config_view = Attribute("config_view", """
+    The name of the view that is contains the configuration for this
+    featurelet.  It should be publishable on objects that provide the
+    interface specified by installed_marker.
+    """)
+
+    installed_marker = Attribute("installed_marker", """
+    A marker interface that should be provided by the featurelet
+    supporter context object when the featurelet is installed, and
+    removed when then featurelet is uninstalled.
+    """)
 
     def getRequiredInterfaces():
         """
@@ -77,10 +82,10 @@ class IFeatureletSupporter(Interface):
 
 class IMenuSupporter(Interface):
     """
-    Marks an object as being able to receive BrowserMenuItem objects
-    as provided by a featurelet.
+    Marks an object as being able to receive menu item mappings as
+    provided by a featurelet.
     """
-    
+
     def addMenuItem(menu_id, menu_item):
         """
         Adds a menu item to the specified menu.  Does nothing if a
@@ -89,7 +94,7 @@ class IMenuSupporter(Interface):
         o menu_id - A string representing the id of the menu w/ which
         the item should be registered.
 
-        o menu_item - A BrowserMenuItem object.
+        o menu_item - A mapping containing the menu item info.
         """
 
     def removeMenuItem(menu_id, menu_item_title):
@@ -108,7 +113,7 @@ class IMenuSupporter(Interface):
     def getMenuItems(menu_id):
         """
         Returns a mapping of menu items for the specified menu id.
-        Keys are the titles, values are BrowserMenuItem objects.
+        Keys are the titles, values are menu item info mappings.
         """
 
 class IFeatureletRegistry(Interface):
@@ -116,7 +121,7 @@ class IFeatureletRegistry(Interface):
     Defines a featurelet registration utility that featurelet
     supporters can use to discover which featurelets are available.
     """
-    
+
     def registerFeaturelet(featurelet):
         """
         Registers a featurelet with the registry.  Raises an exception
