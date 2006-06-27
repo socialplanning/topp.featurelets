@@ -1,7 +1,8 @@
 from OFS.interfaces import IObjectManager
 import zExceptions
 
-from zope.app.publisher.browser.menu import BrowserMenuItem
+from zope.interface import directlyProvides
+from zope.interface import directlyProvidedBy
 
 try:
     from Products.CMFCore.utils import getToolByName
@@ -23,12 +24,9 @@ class BaseFeaturelet(object):
     _required_interfaces = (IObjectManager, IMenuSupporter)
     _menu_id = MENU_ID
 
-    def getConfigView(self):
-        """
-        See IFeaturelet.
-        """
-        return None
-
+    config_view = None
+    installed_marker = None
+    
     def _checkForRequiredInterfaces(self, obj):
         """
         Checks to see if the obj implements or can be adapted to all
@@ -127,6 +125,9 @@ class BaseFeaturelet(object):
             self._addContent(obj)
         if self._info.get('menu_items') is not None:
             self._addMenuItems(obj)
+        if self.installed_marker is not None:
+            directlyProvides(obj, directlyProvidedBy(obj),
+                             self.installed_marker)
         return self._info
 
     def _removeObjects(self, obj, prior_info, info_key):
@@ -173,3 +174,6 @@ class BaseFeaturelet(object):
         if getToolByName is not None:
             self._removeObjects(obj, prior_info, 'content')
         self._removeMenuItems(obj, prior_info)
+        if self.installed_marker is not None:
+            directlyProvides(obj, directlyProvidedBy(obj) -
+                             self.installed_marker)
