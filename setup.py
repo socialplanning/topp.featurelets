@@ -14,13 +14,13 @@ setup(name='topp.featurelets',
       author_email='robm@openplans.org',
       url='https://svn.openplans.org/svn/topp.featurelets/',
       license='GPL',
-      install_requires=['topp.utils>=0.1'],
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['topp'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
           # -*- Extra requirements: -*-
+       'topp.utils>=0.1',
       ],
       entry_points="""
       # -*- Entry points: -*-
