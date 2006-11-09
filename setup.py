@@ -20,7 +20,10 @@ setup(name='topp.featurelets',
       zip_safe=False,
       install_requires=[
           # -*- Extra requirements: -*-
-       'topp.utils>=0.1',
+          'topp.utils',
+      ],
+      dependency_links=[
+          'https://svn.openplans.org/svn/topp.utils/branches/setuptools#egg=topp.utils',
       ],
       entry_points="""
       # -*- Entry points: -*-

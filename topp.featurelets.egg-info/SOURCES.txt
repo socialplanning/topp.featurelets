@@ -8,10 +8,13 @@ topp.featurelets.egg-info/entry_points.txt
 topp.featurelets.egg-info/namespace_packages.txt
 topp.featurelets.egg-info/not-zip-safe
 topp.featurelets.egg-info/paster_plugins.txt
+topp.featurelets.egg-info/requires.txt
 topp.featurelets.egg-info/top_level.txt
+topp/featurelets/README.txt
 topp/featurelets/__init__.py
 topp/featurelets/base.py
 topp/featurelets/config.py
+topp/featurelets/configure.zcml
 topp/featurelets/interfaces.py
 topp/featurelets/menusupporter.py
 topp/featurelets/registry.py
