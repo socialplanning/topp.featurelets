@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: topp.featurelets
+Version: 0.1dev-r1587
+Summary: Base support for featurelets (i.e. feature plugins)
+Home-page: https://svn.openplans.org/svn/topp.featurelets/
+Author: Rob Miller
+Author-email: robm@openplans.org
+License: GPL
+Description: UNKNOWN
+Keywords: featurelets openplans topp
+Platform: UNKNOWN

@@ -1,0 +1,1 @@
+https://svn.openplans.org/svn/topp.utils/branches/setuptools#egg=topp.utils
