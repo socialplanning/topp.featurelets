@@ -1,9 +1,10 @@
 from persistent.mapping import PersistentMapping
 
-from zope.interface import implements
+from zope.interface import implements, providedBy
 from zope.app.annotation.interfaces import IAnnotations
+from zope.component import getUtility
 
-from interfaces import IFeatureletSupporter
+from interfaces import IFeatureletSupporter, IFeaturelet, IFeatureletRegistry
 
 class FeatureletSupporter(object):
     """
@@ -37,13 +38,22 @@ class FeatureletSupporter(object):
         """
         See IFeatureletSupporter.
         """
+        name, featurelet = self._fetch_featurelet(featurelet)
         info = featurelet.deliverPackage(self.context)
-        self.storage[featurelet.id] = info
-
+        self.storage[name] = info
+        
     def removeFeaturelet(self, featurelet):
         """
         See IFeatureletSupporter.
         """
-        if self.storage.has_key(featurelet.id):
+        name, featurelet=self._fetch_featurelet(featurelet)
+        if self.storage.has_key(name):
             featurelet.removePackage(self.context)
-            self.storage.pop(featurelet.id)
+            self.storage.pop(name)
+
+    def _fetch_featurelet(self, name):
+        #if not isinstance(name, basestring) and IFeaturelet.providedBy(name):
+        if not isinstance(name, basestring):
+            return name.id, name
+        reg = getUtility(IFeatureletRegistry)
+        return name, reg.getFeaturelet(name)
