@@ -77,7 +77,10 @@ class IFeatureletSupporter(Interface):
 
     def removeFeaturelet(featurelet):
         """
-        Uninstalls the provided featurelet, if it is installed.
+        Uninstalls the provided featurelet by id, if it is installed.
+
+        Can also take a full featurelet object, if you aren't into
+        brevity.
         """
 
 class IMenuSupporter(Interface):
