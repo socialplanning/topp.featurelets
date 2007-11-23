@@ -2,9 +2,10 @@ from persistent.mapping import PersistentMapping
 
 from zope.interface import implements, providedBy
 from zope.app.annotation.interfaces import IAnnotations
+from zope.component import getAdapter
 from zope.component import getUtility
 
-from interfaces import IFeatureletSupporter, IFeaturelet, IFeatureletRegistry
+from interfaces import IFeatureletSupporter, IFeaturelet
 
 class FeatureletSupporter(object):
     """
@@ -55,5 +56,4 @@ class FeatureletSupporter(object):
         #if not isinstance(name, basestring) and IFeaturelet.providedBy(name):
         if not isinstance(name, basestring):
             return name.id, name
-        reg = getUtility(IFeatureletRegistry)
-        return name, reg.getFeaturelet(name)
+        return name, getAdapter(self, IFeaturelet, name)

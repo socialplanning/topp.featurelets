@@ -26,6 +26,9 @@ class BaseFeaturelet(object):
 
     config_view = None
     installed_marker = None
+
+    def __init__(self, context):
+        self.context = context
     
     def _checkForRequiredInterfaces(self, obj):
         """
@@ -177,3 +180,8 @@ class BaseFeaturelet(object):
         if self.installed_marker is not None:
             directlyProvides(obj, directlyProvidedBy(obj) -
                              self.installed_marker)
+
+    @property
+    def installed(self):
+        #XXX double context due to IFeaturelet(IFeatureletSupporter(IProject)))
+        return self.installed_marker.providedBy(self.context.context)
