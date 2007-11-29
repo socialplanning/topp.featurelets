@@ -22,9 +22,7 @@ setup(name='topp.featurelets',
           # -*- Extra requirements: -*-
           'topp.utils',
       ],
-      dependency_links=[
-        'http://www.openplans.org/projects/opencore/dependencies',
-      ],
+      dependency_links=[],
       entry_points="""
       # -*- Entry points: -*-
       """,
