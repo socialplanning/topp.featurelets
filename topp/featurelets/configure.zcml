@@ -3,14 +3,14 @@
            xmlns:i18n="http://namespaces.zope.org/i18n"
            i18n_domain="topp">
 
-  <include package="zope.annotation" />
+  <include package="zope.app.annotation" />
 
-  <adapter for="zope.annotation.interfaces.IAnnotatable"
+  <adapter for="zope.app.annotation.interfaces.IAnnotatable"
            provides=".interfaces.IFeatureletSupporter"
            factory=".supporter.FeatureletSupporter"
            />
 
-  <adapter for="zope.annotation.interfaces.IAnnotatable"
+  <adapter for="zope.app.annotation.interfaces.IAnnotatable"
            provides=".interfaces.IMenuSupporter"
            factory=".menusupporter.MenuSupporter"
            />
