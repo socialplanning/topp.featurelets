@@ -15,7 +15,7 @@ except ImportError:
         pass
 
 from zope.interface import directlyProvides
-from zope.app.annotation.interfaces import IAttributeAnnotatable
+from zope.annotation.interfaces import IAttributeAnnotatable
 
 from topp.featurelets.interfaces import IFeatureletSupporter
 
