@@ -1,9 +1,8 @@
 from persistent.mapping import PersistentMapping
 
-from zope.interface import implements, providedBy
+from zope.interface import implements
 from zope.app.annotation.interfaces import IAnnotations
 from zope.component import getAdapter
-from zope.component import getUtility
 
 from interfaces import IFeatureletSupporter, IFeaturelet
 
