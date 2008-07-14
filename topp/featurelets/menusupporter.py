@@ -2,7 +2,7 @@ from persistent.mapping import PersistentMapping
 from topp.utils.orderedpersistentmapping import OrderedPersistentMapping
 
 from zope.interface import implements
-from zope.app.annotation.interfaces import IAnnotations
+from zope.annotation.interfaces import IAnnotations
 
 from interfaces import IMenuSupporter
 
